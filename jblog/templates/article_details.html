@@ -1,11 +1,12 @@
+
+
 <h1>{{ post.title }}</h1>
 
-<small>By: {{ post.author.first_name }}</small>
+<small>By: {{ post.author.first_name }} - {{ post.author.last_name }}</small>
+<hr>
 <br />
+{{ post.description }}
 
-<br />
-<br />
-{{ post.body}}
-
-<br/><br/><br/>
+<br/>
 <a href="{% url 'home' %}">Back</a>
+

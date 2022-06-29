@@ -32,7 +32,7 @@ class BlogPost(models.Model):
     status = models.IntegerField(choices=STATUS, default=0) #Status of the Article either Draft or Published
 
     def __str__(self):
-        return f"{self.title} ({self.author})"
+        return f"({self.title}) ({self.author})"
         
     
 
