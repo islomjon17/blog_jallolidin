@@ -33,6 +33,9 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return f"({self.title}) ({self.author})"
+
+    def get_absolute_url(self):
+        return reverse('article-detail', args=(str(self.id)))
         
     
 

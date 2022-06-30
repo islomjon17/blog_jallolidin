@@ -10,8 +10,16 @@
 <hr>
 <br />
 {{ post.description }}
-
+<br/>
+<img src="{{ post.cover }}" class="rounded float-start" alt="{{ post.title }}">
 <br/>
 <a href="{% url 'home' %}"  class="btn btn-secondary">Back</a>
+<br/>
+<br/>
+<a href="{% url 'update_post' post.pk %}" class="btn btn-primary">Update View</a>
+<br/>
+<br/>
+<a href="{% url 'delete_post' post.pk %}" class="btn btn-primary">Delete View</a>
 
 {% endblock %}
+
