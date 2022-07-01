@@ -9,7 +9,7 @@
 <small>By: {{ post.author.first_name }} - {{ post.author.last_name }}</small>
 <hr>
 <br />
-{{ post.description }}
+{{ post.description|safe }}
 <br/>
 <img src="{{ post.cover }}" class="rounded float-start" alt="{{ post.title }}">
 <br/>
@@ -19,7 +19,7 @@
 <a href="{% url 'update_post' post.pk %}" class="btn btn-primary">Update View</a>
 <br/>
 <br/>
-<a href="{% url 'delete_post' post.pk %}" class="btn btn-primary">Delete View</a>
+<a href="{% url 'delete_post' post.pk  %}" class="btn btn-primary">Delete View</a>
 
 {% endblock %}
 
