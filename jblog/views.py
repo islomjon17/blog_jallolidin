@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 
 from .models import BlogPost
 
-from .forms import PostForm
+from .forms import PostForm, CategoryForm
 # Create your views here.
 
 
@@ -44,3 +44,8 @@ class PostDeleteView(DeleteView):
     model = BlogPost
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+class AddCategoryView(CreateView):
+    model = BlogPost
+    form_class = CategoryForm
+    template_name = 'add_category.html'
