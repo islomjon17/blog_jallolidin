@@ -1,6 +1,10 @@
 from django import forms
 from .models import *
 
+# cats = [('Football','Football'), ('Coding','Coding'),('Intertainment','Intertainment')]
+
+
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
@@ -11,9 +15,10 @@ class PostForm(forms.ModelForm):
            'title':  forms.TextInput(attrs={'class':'form-control', 'placeholder': 'title'}),
            'slug': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'slug' })
             ,'author':forms.Select(attrs={'class':'form-control', 'placeholder': 'author'})
+            ,'region':forms.Select(attrs={'class':'form-control', 'placeholder': 'region'})
             , 'status':forms.TextInput(attrs={'class':'form-control', 'placeholder': 'status'})
             , 'keywords':forms.TextInput(attrs={'class':'form-control', 'placeholder': 'keywords'})
-            , 'category': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'category'})
+             ,'category':forms.Select(attrs={'class':'form-control', 'placeholder': 'author'})
            , 'description': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'description'})
            
         } 
