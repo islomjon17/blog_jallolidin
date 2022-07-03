@@ -25,8 +25,8 @@ class ArticleDetailsView(DetailView):
 
 def CategoryView(request, cats):
     pk = Category.objects.get(name=cats)
-    category_post = BlogPost.objects.filter(category=pk)
-    return render(request, 'categories.html', {'cats': cats,
+    category_post = BlogPost.objects.filter(category=pk.replace('-', ' '))
+    return render(request, 'categories.html', {'cats': cats.name().replace('-', ' '),
                                                "category_post": category_post})
 
 
