@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+{% block content %}
+
+{% if category_post %}
+
+
+<h1>{{cats}} Categories</h1>
+
+<ul>
+{% for post in category_post %}
+ 
+
+<li> <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> 
+    - {{ post.author.category }}
+    - {{ post.author.first_name }} {{ post.author.last_name }} - 
+    {{ post.created_on}}
+    <small>
+        {% if user.is_superuser %}
+        - <a href="{% url 'update_post' post.pk %}">(Edit)</a>
+        - <a href="{% url 'delete_post' post.pk %}">(Delete)</a> 
+        {% endif %}
+    </small>
+    <br/>
+    
+    
+    {{ post.description|slice:":200"|safe }}</li>
+{% endfor %}
+</ul>
+<br/>
+<a href="{% url 'home' %}"  class="btn btn-secondary">Back</a>
+
+{% else %}
+<h1>Sorry This Page Is Not Exists...</h1>
+{% endif %}
+
+
+
+{% endblock %}
+</body>
+</html>

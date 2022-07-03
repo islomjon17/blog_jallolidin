@@ -2,11 +2,10 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-from .models import BlogPost
+from .models import BlogPost, Category
 
 from .forms import PostForm, CategoryForm
 # Create your views here.
-
 
 
 # def home(request):
@@ -22,7 +21,13 @@ class ArticleDetailsView(DetailView):
     model = BlogPost
     context_object_name = 'post'
     template_name = 'article_details.html'
-    
+
+
+def CategoryView(request, cats):
+    pk = Category.objects.get(name=cats)
+    category_post = BlogPost.objects.filter(category=pk)
+    return render(request, 'categories.html', {'cats': cats,
+                                               "category_post": category_post})
 
 
 class AddPostView(CreateView):
@@ -31,6 +36,7 @@ class AddPostView(CreateView):
     template_name = 'add_post.html'
     ordering = ['created_ons']
     # fields = "__all__"
+
 
 class UpdatePostView(UpdateView):
     model = BlogPost
@@ -44,6 +50,7 @@ class PostDeleteView(DeleteView):
     model = BlogPost
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
 
 class AddCategoryView(CreateView):
     model = BlogPost
