@@ -2,7 +2,7 @@
 
 {% block content %}
 
-
+{% if user.is_superuser %}
 <h1>Add Blog Posts</h1>
 
 <div class="form-group">
@@ -13,4 +13,13 @@
     
     </form>
 </div>
+
+<!-- <script type="text/javascript">
+var name = "{{post.id}}";
+document.getElementById("Islomjon").value = name;
+
+</script> -->
+
+{% endif %}
+
 {% endblock %}
