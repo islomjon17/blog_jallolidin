@@ -14,9 +14,11 @@
     {{ post.created_on}}
     <small>
         {% if user.is_superuser %}
+        {% if user.id == post.author.id %}
         - <a href="{% url 'update_post' post.pk %}">(Edit)</a>
         - <a href="{% url 'delete_post' post.pk %}">(Delete)</a> 
         {% endif %}
+        {% endif %}}
     </small>
     <br/>
     

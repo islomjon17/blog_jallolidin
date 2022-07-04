@@ -16,10 +16,11 @@
 <a href="{% url 'home' %}"  class="btn btn-secondary">Back</a>
 <br/>
 <br/>
+{% if user.id == post.author.id %}
 <a href="{% url 'update_post' post.pk %}" class="btn btn-primary">Update View</a>
 <br/>
 <br/>
 <a href="{% url 'delete_post' post.pk  %}" class="btn btn-primary">Delete View</a>
-
+{% endbif %}
 {% endblock %}
 
