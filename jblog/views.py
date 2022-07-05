@@ -12,7 +12,7 @@ from .forms import PostForm, CategoryForm
 def LikeView(request, pk):
     post = get_object_or_404(BlogPost, id=request.POST.get('post_id'))
     liked = False
-    if post.like.filter(id=request.usei.id).exists():
+    if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
         liked = False
     else:
