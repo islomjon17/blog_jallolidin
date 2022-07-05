@@ -11,8 +11,12 @@ from .forms import PostForm, CategoryForm
 
 def LikeView(request, pk):
     post = get_object_or_404(BlogPost, id=request.POST.get('post_id'))
-
-    post.likes.add(request.user)
+    liked = False
+    if post.like.filter(id=request.usei.id).exists():
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
     return HttpResponseRedirect(reverse('article-detail', args=[str(pk)]))
 
 
