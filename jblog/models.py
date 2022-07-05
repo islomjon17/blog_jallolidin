@@ -51,6 +51,11 @@ class BlogPost(models.Model):
     # Status of the Article regions
     region = models.CharField(
         max_length=250, choices=REGION, default="Toshkent")
+    # Article likes
+    likes = models.ManyToManyField(User, related_name="blog_posts")
+
+    def total_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return f"({self.title}) ({self.author})"

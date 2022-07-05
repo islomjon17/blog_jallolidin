@@ -22,5 +22,37 @@
 <br/>
 <a href="{% url 'delete_post' post.pk  %}" class="btn btn-primary">Delete View</a>
 {% endif %}
+<br/><br/>
+<hr/> 
+<br/>
+<br/>
+
+<form action="{% url 'like_post' post.pk %}" method="POST">
+  {% csrf_token %}
+  <button type="submit", name="post_id", value="{{ post.pk }}", class="btn btn-primary btn btn-sm">
+    Like
+  </button> - {{ total_likes }} likes
+</form>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
