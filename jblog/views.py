@@ -13,6 +13,7 @@ def LikeView(request, pk):
     post = get_object_or_404(BlogPost, id=request.POST.get('post_id'))
     liked = False
     if post.like.filter(id=request.usei.id).exists():
+        post.likes.remove(request.user)
         liked = False
     else:
         post.likes.add(request.user)
@@ -37,8 +38,15 @@ class ArticleDetailsView(DetailView):
 
         stuff = get_object_or_404(BlogPost, id=self.kwargs['pk'])
         total_likes = stuff.total_likes()
+
+        liked = False
+
+        if stuff.liked.filter(id=self.request.user.id).exists():
+            liked = True
+
         context["cat_menu"] = cat_menu
         context["total_likes"] = total_likes
+        context["liked"] = liked
 
         return context
 
