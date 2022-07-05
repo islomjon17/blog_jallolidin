@@ -9,6 +9,7 @@
     <form method="post"  class="form-control form-control-lg" type="text" >
         {% csrf_token %}
     {{form.as_p}}
+    {{form.media}}
     {% if user.id == post.author.id %}
         <button type="submit" class="btn btn-secondary">Update</button>
         {% endif %}
