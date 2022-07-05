@@ -2,6 +2,7 @@ from pdb import post_mortem
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -38,7 +39,7 @@ class BlogPost(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE)  # Author of the Article
     # Short Description of the articlentent of the article, you need to install CKEditor
-    description = models.CharField(max_length=500)
+    description = RichTextField(blank=True, null=True)
     category = models.ForeignKey(
         'Category', related_name='category', on_delete=models.CASCADE)
     keywords = models.CharField(max_length=250)  # Keywords to be used in SEO
