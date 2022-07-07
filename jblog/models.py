@@ -41,7 +41,10 @@ class BlogPost(models.Model):
     # Short Description of the articlentent of the article, you need to install CKEditor
     description = RichTextField(blank=True, null=True)
     category = models.ForeignKey(
-        'Category', related_name='category', on_delete=models.CASCADE)
+        'Category', related_name='category', default="coding", on_delete=models.CASCADE)
+    snippet = models.CharField(
+        max_length=200, default="Click Link Above To Read Blog Post")
+
     keywords = models.CharField(max_length=250)  # Keywords to be used in SEO
     # Cover Image of the article
     cover = models.ImageField(null=True, blank=True, upload_to='images/')
