@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
-from .forms import SignUpForm, EditProfileForm
+from .forms import SignUpForm, EditProfileForm, ChangePasswordForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 
 
 class ChangePasswordView(PasswordChangeView):
-    form_class = PasswordChangeForm
+    form_class = ChangePasswordForm
     success_url = reverse_lazy('password_success')
 
 # Sign Up View
