@@ -2,7 +2,8 @@
 
 from django.urls import path, include
 from .views import HomeView, CategoryView, LikeView, ArticleDetailsView, AddPostView, UpdatePostView, PostDeleteView, AddCategoryView
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -15,4 +16,4 @@ urlpatterns = [
     path('cats/<str:cats>/', CategoryView, name='category'),
     path('like/<int:pk>', LikeView, name='like_post'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -11,7 +11,7 @@
 <br />
 {{ post.description|safe }}
 <br/>
-<img src="{{ post.cover }}" class="rounded float-start" alt="{{ post.title }}">
+<img src="{{ post.cover.url }}" class="rounded float-start" alt="{{ post.title }}">
 <br/>
 <a href="{% url 'home' %}"  class="btn btn-secondary">Back</a>
 <br/>
