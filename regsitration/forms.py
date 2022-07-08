@@ -15,14 +15,13 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = [
-            'username',
-            'first_name',
-            'last_name',
-            'email',
-            'password1',
-            'password2',
-        ]
+        fields = ('username',
+                  'first_name',
+                  'last_name',
+                  'email',
+                  'password1',
+                  'password2',
+                  )
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
@@ -63,14 +62,5 @@ class EditProfileForm(UserChangeForm):
 
 class Meta:
     model = User
-    fields = [
-        'first_name',
-        'last_name',
-        'email',
-        'username',
-        'last_login',
-        'is_superuser',
-        'is_staff',
-        'is_active',
-        'date__joined',
-    ]
+    fields = ('first_name', 'last_name', 'email', 'username', 'last_login',
+              'is_superuser', 'is_staff', 'is_active', 'date__joined')
